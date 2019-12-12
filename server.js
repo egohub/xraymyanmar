@@ -60,21 +60,21 @@ app.get('/:id', function (req, res) {
     var stream = x('https://channelmyanmar.org/?p='+id, {
            title: 'title',
            text : '#cap1',
+           rate : '.imdb_r .a span',
+           director : '.meta_dd a',
+           actor :  '.meta_dd.limpiar',
            image : '.fix img@src',
            downloadUrl: '.elemento a@href',
             posts: x('.elemento', [{
-              //downloads : [ 'a@href'],
-              download: 'a@href'
-              //link : '.elemento a@href'
+              site : '.b | trim',
+              download: 'a@href',
+              quality : '.d',
+              size : ' .c'
             }])
           }).stream()
           stream.pipe(res)
-          })
-      /* 
-       (function (err, obj) {
-           console.log(err, obj)
-         })
-    */
+})
+    
 app.get('/movie', function(req, res) {
    var stream = x('https://channelmyanmar.org/movies', {
       //id: '.item_1 .item@id',

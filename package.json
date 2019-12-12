@@ -1,0 +1,22 @@
+{
+  "name": "xraymyanmar",
+  "version": "1.0.0",
+  "description": "channelmyanmar webscripting project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "expressXray"
+  },
+  "author": "egohub",
+  "license": "ISC",
+  "dependencies": {
+    "x-ray": "^2.3.4",
+    "express": "^4.17.1",
+    "mongoose": "^5.3.12",
+    "morgan": "^1.9.1",
+    "node-cron": "^2.0.3"
+  }
+}

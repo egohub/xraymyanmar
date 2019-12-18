@@ -31,7 +31,7 @@ var x = Xray({
       return typeof value === 'string' ? value.replace("https://channelmyanmar.org/?p=", "") : value
   },
     heroku: function (value) {
-      return typeof value === 'string' ? 'http://localhost:8081/movie/' + value : value
+      return typeof value === 'string' ? 'https://xraymm.herokuapp.com/movie/' + value : value
     }
   }
 })

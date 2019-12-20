@@ -174,11 +174,11 @@ app.get('/movie/:id', function (req, res) {
         //  console.log(err, obj)
         Movies.findOrCreate(obj,{ appendToArray: true }, (err, result) => {
           console.log('WE ADDED  DATABAS');
-          
+          res.send(result);
         })
           var movie = new Movies()
  
-              res.send(obj)
+              // res.send(obj)
         })
       }
       else {

@@ -80,14 +80,9 @@ app.get('/:id', function (req, res) {
   }).stream()
   stream.pipe(res)
 })
-/* 
- (function (err, obj) {
-     console.log(err, obj)
-   })
-*/
+
 app.get('/movie', function (req, res) {
   var stream = x('https://channelmyanmar.org/movies', {
-    //id: '.item_1 .item@id',
     links: x('.item .boxinfo', [{
       text: 'a',
       href: 'a@href',
@@ -97,7 +92,6 @@ app.get('/movie', function (req, res) {
         title: 'h1',
         image: '.fix img@src',
         download: ['.elemento a@href']
-        //link : '.elemento a@href'
       })
     }])
   }).stream()
@@ -138,7 +132,6 @@ const xmovie = (item) => {
     image: '.fix img@src',
     downloadUrl: '.elemento a@href',
     posts: x('.elemento', [{
-      //downloads : [ 'a@href'],
       site: '.b | trim',
       download: 'a@href',
       quality: '.d',
@@ -152,47 +145,34 @@ app.get('/movie/:id', function (req, res) {
     if (err) {
       throw err
     } else {
-      if (resp < 1) {
         console.log('No Fount :( !! But We start Scrape Now Sir')
         var stream = x('https://channelmyanmar.org/?p=' + id, {
           ids: 'link[rel="shortlink"]@href | repid',
           title: 'title',
-          text: '#cap1 | trim',
+          text: '#cap1',
           rate: '.imdb_r .a span',
           director: '.meta_dd a',
           actor: '.meta_dd.limpiar',
           image: '.fix img@src',
           categories: 'p.meta i.limpiar a',
           posts: x('.elemento', [{
-            //downloads : [ 'a@href'],
             site: '.b | trim',
             download: 'a@href',
             quality: '.d',
             size: ' .c'
           }])
         })(function (err, obj) {
-        //  console.log(err, obj)
         Movies.findOrCreate(obj,{ appendToArray: true }, (err, result) => {
           console.log('WE ADDED  DATABAS');
           res.send(result);
         })
-          var movie = new Movies()
- 
-              // res.send(obj)
         })
-      }
-      else {
-        res.send(resp)
-        console.log('Already Saved!')
-      }
     }
   })
-
 })
 
 var port = process.env.PORT || 3000;
 
-// app.listen(3000);
 app.listen(port, () => {
   console.log('The party is on at port ' + port);
 });

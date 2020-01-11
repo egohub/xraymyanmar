@@ -1,0 +1,33 @@
+<ion-view view-title="Dashboard">
+
+  <ion-content class="">
+     <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in posts" type="item-text-wrap" href="#/tab/dash/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.title.rendered}} {{chat.id}}</h2>
+        
+    <p ng-bind-html="chat.excerpt.rendered"></p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+
+
+	<ion-infinite-scroll
+	ng-if="moreDataExists()"
+    on-infinite="loadMore()"
+    distance="1%"
+    immediate-check="false">
+  </ion-infinite-scroll>
+
+ </ion-content>
+
+</ion-view>
+
+ <div ng-bind-html="postItem.content.rendered"></div>
+        </div>

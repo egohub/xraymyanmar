@@ -62,7 +62,7 @@ app.get('/movies', function (req, res) {
  */
 app.get('/:id', function (req, res) {
   var id = req.params.id
-  var stream = x('https://channelmyanmar.org/?p=' + id, {
+  var stream = x('https://channelmyanmar.org/' + id, {
     title: 'title',
     text: '#cap1',
     rate: '.imdb_r .a span',

@@ -1,7 +1,7 @@
 var express = require('express');
 var Xray = require('x-ray');
 var app = express();
-var cors = require('cors);
+var cors = require('cors');
 const mongoose = require("mongoose");
 const Movies = require("./models/movies");
 

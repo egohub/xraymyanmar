@@ -1,6 +1,7 @@
 var express = require('express');
 var Xray = require('x-ray');
 var app = express();
+var cors = require('cors);
 const mongoose = require("mongoose");
 const Movies = require("./models/movies");
 
@@ -60,7 +61,7 @@ app.get('/movies', function (req, res) {
    console.log(err) // handle error in promise
  })
  */
-app.get('/:id', function (req, res) {
+app.get('/:id', cors(), function (req, res) {
   var id = req.params.id
   var stream = x('https://channelmyanmar.org/' + id, {
     title: 'title',
@@ -81,7 +82,7 @@ app.get('/:id', function (req, res) {
   stream.pipe(res)
 })
 
-app.get('/movie', function (req, res) {
+app.get('/movie',cors(), function (req, res) {
   var stream = x('https://channelmyanmar.org/movies', {
     links: x('.item .boxinfo', [{
       text: 'a',

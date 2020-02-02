@@ -4,6 +4,7 @@ var app = express();
 var cors = require('cors');
 const mongoose = require("mongoose");
 const Movies = require("./models/movies");
+var urls = "http://oomovie.net/";
 
 app.use(express.static((__dirname, 'public')));
 
@@ -33,9 +34,36 @@ var x = Xray({
   },
     heroku: function (value) {
       return typeof value === 'string' ? 'https://xraymm.herokuapp.com/movie/' + value : value
+    },
+    m3u: function (value) {
+      return typeof value === 'string' ?  value.match(/var url_ios = '(.*?)';/)[1] : value
+    },
+    play: function (value) {
+      return typeof value === 'string' ?  value.match(/var url_play = '(.*?)';/)[1] : value
+    },
+    https: function (value) {
+      return typeof value === 'string' ? value.replace("http://" , "https://") : value
     }
   }
 })
+
+app.get('/soccer', cors(), function(req, res) {
+    var stream =x(urls, {
+    matches : x('.match-items .match-item',[{
+    time : 'span@data-countdown',
+    teams : 'a',
+      href : 'a@href',
+      info: x('a@href', {
+        title : 'title',
+        ios : '.entry-content p| m3u | https' ,
+        play : '.entry-content p | play | https',
+        category : '.cat-links a'
+      })
+    }])
+ }).stream()
+  stream.pipe(res)
+});
+
 app.get('/movies', function (req, res) {
   var stream = x('https://channelmyanmar.org/movies', 'div.item_1 .item', [
     {

@@ -124,9 +124,9 @@ angular.module('starter.controllers', [])
    var hero = 'https://xraymm.herokuapp.com/movie/';
     DataLoader.get(hero+ $stateParams.id).then(function(response) {
     console.log(response.data);
-   
+      $ionicLoading.hide();
       $scope.posts = response.data;
-       //$ionicLoading.hide();
+       
  })
   
 })

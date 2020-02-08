@@ -36,10 +36,10 @@ var x = Xray({
       return typeof value === 'string' ? 'https://xraymm.herokuapp.com/movie/' + value : value
     },
     m3u: function (value) {
-      return typeof value === 'string' ?  value.match(/var url_ios = '(.*?)';/)[1] : value
+      return typeof value === 'string' ?  value.match(/var url_ios = '(.*?)';/) : value
     },
     play: function (value) {
-      return typeof value === 'string' ?  value.match(/var url_play = '(.*?)';/)[1] : value
+      return typeof value === 'string' ?  value.match(/var url_play = '(.*?)';/) : value
     },
     https: function (value) {
       return typeof value === 'string' ? value.replace("http://" , "https://") : value

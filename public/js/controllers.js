@@ -121,7 +121,7 @@ angular.module('starter.controllers', [])
       showDelay: 10
     });
    var xmxx='https://untitled-04zz12tcihnc.runkit.sh/';
-   var hero = 'https://xraymm.herokuapp.com/movie/';
+   var hero = 'https://xraymovie.herokuapp.com/';
     DataLoader.get(hero+ $stateParams.id).then(function(response) {
     console.log(response.data);
       $ionicLoading.hide();

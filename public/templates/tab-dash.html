@@ -4,7 +4,7 @@
      <ion-refresher on-refresh="doRefresh()"></ion-refresher>
 
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in posts" type="item-text-wrap" href="#/tab/dash/{{chat.id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in posts" type="item-text-wrap" href="#/tab/dash/{{chat.slug}}">
         <img ng-src="{{chat.face}}">
         <h2>{{chat.title.rendered}} {{chat.id}}</h2>
         

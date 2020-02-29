@@ -2,10 +2,8 @@
 <ion-view view-title="{{posts.title}}">
   <ion-content class="padding">
     <img ng-src="{{posts.image}}" style="width: 344px; height: 300px">
-    <ion-item ng-repeat="p in posts.posts">{{p.download}}<span class="badge badge-assertive">{{p.size}}</span> </ion-item>
+    <ion-item ng-repeat="p in posts.posts" href="{{p.download}} target="_blank">{{p.download}}<span class="badge badge-assertive">{{p.size}}</span> </ion-item>
    
-    <p>
-      {{posts.text}}
-    </p>
+   
   </ion-content>
 </ion-view>

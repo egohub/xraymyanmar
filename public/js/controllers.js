@@ -120,9 +120,9 @@ angular.module('starter.controllers', [])
       showBackdrop: false,
       showDelay: 10
     });
-   var xmxx='https://untitled-04zz12tcihnc.runkit.sh/';
+   
    var hero = 'https://xraymovie.herokuapp.com/';
-    DataLoader.get(hero+ $stateParams.id).then(function(response) {
+    DataLoader.get('/'+$stateParams.id).then(function(response) {
     console.log(response.data);
       $ionicLoading.hide();
       $scope.posts = response.data;

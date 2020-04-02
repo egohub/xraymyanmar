@@ -1,9 +1,17 @@
-
-<ion-view view-title="{{posts.title}}">
+<ion-view view-title="{{news.title}}">
   <ion-content class="padding">
-    <img ng-src="{{posts.image}}" style="width: 344px; height: 300px">
-    <ion-item ng-repeat="p in posts.posts" href="{{p.download}}" target="_blank">{{p.download}}<span class="badge badge-assertive">{{p.size}}</span> </ion-item>
-   
-   
-  </ion-content>
+
+    <img ng-src="{{news.img}}" style="width: 100%; height: 300px">
+    <p >Director : {{news.details.director}} <br>
+      IMDB : {{news.rate}} <br>
+    Category : {{news.details.category}}
+    </p>
+    <a class="item" href="{{p.url}}" target="_blank" ng-repeat="p in news.details.download">{{p.site}}<span class="badge badge-assertive">{{p.size}}</span> </a>
+    <div class="spacer" style="width: 300px; height: 53px;"></div>
+    <a class="item-icon-left assertive item" href="{{p.url}}" target="_blank" ng-repeat="p in news.details.mega"><i class="icon ion-ios-play"></i>Direct Watch </a>
+        <!-- <p>
+            {{news.rate}}
+        </p> -->
+         
+    </ion-content>
 </ion-view>

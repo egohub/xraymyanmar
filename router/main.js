@@ -62,50 +62,8 @@ const x = Xray({
         }
     }
   });
-// router.get('/', function(req, res, next) {
-//     res.send('index')
-// });
 
-router.get('/api/', function(req, res, next) {
-    x(baseUrl, {
-        title: 'title',
-        thispage: '.paginado ul li.dd a | num',
-        totalCount: '.paginado ul li:last-child a@href | number',
-        nextpage: '.paginado ul li.dd a | fix2',
-        totalpage: '.paginado ul li:last-child a@href',
-        results: x('.peliculas .items .item', [{
-            id: '@id | number',
-            quality: '.calidad2',
-            title: '.image img@alt | regex',
-            rate: '.imdbs',
-            type: '.typepost',
-            year: '.image img@alt | number',//'.fixyear .year',
-            link: ' a@href',
-            img: '.image img@src',
-            details: x('a@href', {
-                title: 'h1  | regex',
-                // description: 'a@href',  
-                category: 'i.limpiar',
-                uploadDate: 'meta[itemprop="uploadDate"]@content',
-                embedUrl: 'meta[itemprop="embedUrl"]@content',
-                director: '#single div[itemprop="director"] meta@content',
-                actors: x('div[itemprop="actors"]', ['meta[itemprop="name"]@content']),
-                gallary: x('div.galeria_img', ['img@src']),
-                download: x('li.elemento', [{ size: '.c', site: '.b | host', quality: '.e', url: 'a@href' }]),
-                mega: x('li.elemento', [{  url: 'a@href | mega' }]),
-            })
-        }])
-      })
-    })(function(err, obj) {
-        console.log(err, obj);
-        res.send(obj);
-        // res.render('views/products', {
-        //     products: obj.data,
-        //     current: obj.thispage,
-        //     pages: obj.totalCount
-        // });
-    })
-});
+
 router.get('/api/:page', function(req, res, next) {
     var perPage = 9
     var page = pageUrl + req.params.page || baseUrl
@@ -142,11 +100,6 @@ router.get('/api/:page', function(req, res, next) {
         (function(err, obj) {
             console.log(err, obj);
             res.send(obj);
-            // res.render('main/api', {
-            //     products: obj.data,
-            //     current: obj.thispage,
-            //     pages: obj.totalCount
-            // });
         })
 });
 

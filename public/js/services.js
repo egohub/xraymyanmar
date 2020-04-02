@@ -18,7 +18,7 @@ angular.module('starter.services', [])
 
         var content = [];
         var gc = 'https://untitled-o2334v8oxm2y.runkit.sh/';
-        $http.get('https://xraymovie.herokuapp.com/api/1').then(function(response) {
+        $http.get('/api/1').then(function(response) {
             console.log('-----------response ----------------------- ');
             for (var i = 0; i < response.data.results.length; i++) {
 

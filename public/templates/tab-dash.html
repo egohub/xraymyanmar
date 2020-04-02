@@ -1,33 +1,22 @@
-<ion-view view-title="Dashboard">
+<ion-view view-title="Movies">
 
-  <ion-content class="">
-     <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+    <ion-content class="">
+        <ion-refresher on-refresh="doRefresh()"></ion-refresher>
 
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in posts" type="item-text-wrap" href="#/tab/dash/{{chat.slug}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.title.rendered}} {{chat.id}}</h2>
-        
-    <p ng-bind-html="chat.excerpt.rendered"></p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-list>
+            <a class="item my-item item-image" collection-repeat="pet in news | filter:filter" collection-item-height="230" collection-item-width="'50%'" href="#/tab/dash/{{pet.id}}">
+                <!-- <h5>{{pet.title}}</h5> -->
+                <img class="full-image" src="{{pet.img}}" style="height:80%;">
+                <p class="text-assertive">{{pet.title}}</p>
+                <span class="badge badge-assertive">{{pet.rate}}</span>
+                <p>{{pet.category}}</p>
+                <p>{{pet.rating}}</p>
+            </a>
+        </ion-list>
 
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
-      </ion-item>
-    </ion-list>
+        <ion-infinite-scroll ng-if="moreDataExists()" on-infinite="loadMore()" distance="1%" immediate-check="false">
+        </ion-infinite-scroll>
 
-
-	<ion-infinite-scroll
-	ng-if="moreDataExists()"
-    on-infinite="loadMore()"
-    distance="1%"
-    immediate-check="false">
-  </ion-infinite-scroll>
-
- </ion-content>
+    </ion-content>
 
 </ion-view>
-
- <div ng-bind-html="postItem.content.rendered"></div>
-        </div>

@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const Movies = require("./models/movies");
 var urls = "http://oomovie.net/";
 
+var mainRoutes = require('./router/main')
+app.use(mainRoutes);
+
 app.use(express.static((__dirname, 'public')));
 
 var x = Xray({

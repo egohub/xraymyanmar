@@ -64,10 +64,19 @@ var x = Xray({
           return refine2;
         }
       },
+      yadi: function(value) {
+      if (typeof value === 'string') {
+         if (value.includes("https://yadi.sk")){
+           // var url = getUrl(value);
+            return value;
+         }
+         return ;
+        }
+      },
       mega: function(value) {
         if (typeof value === 'string') {
            if (value.includes("https://mega.nz/")){
-             var url = value.replace("https://mega.nz/", "https://mega.nz/embed");
+             var url = value.replace("https://mega.nz/file", "https://mega.nz/embed");
               return url;
            }
            return ;
@@ -131,6 +140,7 @@ app.get('/api/:page', function(req, res, next) {
                     gallary: x('div.galeria_img', ['img@src']),
                     download: x('li.elemento', [{ size: '.c', site: '.b | host', quality: '.e', url: 'a@href' }]),
                     mega: x('li.elemento', [{  url: 'a@href | mega' }]),
+                    yadi: x('li.elemento', [{title: 'a@href | yadi'}]),
                 })
             }])
         })

@@ -3,7 +3,7 @@
     "short_name": "XRay",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#fff",
+    "background_color": "#3f51b5",
     "theme_color": "#3f51b5",
     "description": "Movie App",
     "icons": [{
